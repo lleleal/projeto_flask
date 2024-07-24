@@ -66,15 +66,14 @@ def salvar_produto():
     produto = {"nome":nome,"descricao":descricao,"preco":preco,"imagem":imagem}
     
     adicionar_produto(produto)
-    #lista_produtos.append(produto)
 
     return redirect(url_for("produtos"))
 
-@app.route("/gerarcpf")
-def gerar_cpf():
+@app.route("/criarcpf")
+def criar_cpf():
     cpf = CPF()
     new_cpf = cpf.generate()
-    return render_template('gerar-cpf.html', show_cpf=new_cpf)
+    return render_template('criar-cpf.html', show_cpf=new_cpf)
 
 @app.route("/validar-cpf")
 def validar_cpf_form():
@@ -87,14 +86,14 @@ def validar_cpf():
     if cpf.validate(cpf_validate):
         result = {"status":"CPF Válido","info":"cpf_validate"}
     else:
-        result = {"status":"CPF Inválido","info":cpf_validate}
-    return render_template('validar-result.html',result=result)
+        result = {"status":"Tente novamente!","info":cpf_validate}
+    return render_template('validar-resultado.html',result=result)
 
-@app.route("/gerarcnpj")
-def gerar_cnpj():
+@app.route("/criarcnpj")
+def criar_cnpj():
     cnpj=CNPJ()
     new_cnpj=cnpj.generate()
-    return render_template('gerar-cnpj.html', show_cnpj=new_cnpj)
+    return render_template('criar-cnpj.html', show_cnpj=new_cnpj)
 
 @app.route("/validar-cnpj")
 def cnpj_form():
@@ -107,8 +106,8 @@ def validar_cnpj():
     if cnpj.validate(cnpj_validate):
         result = {"status":"CNPJ Válido","info":cnpj_validate}
     else:
-        result = {"status":"CNPJ Inválido","info":cnpj_validate}
-    return render_template('validar-result.html',result=result)
+        result = {"status":"Tente novamente!","info":cnpj_validate}
+    return render_template('validar-resultado.html',result=result)
 
 app.run
 

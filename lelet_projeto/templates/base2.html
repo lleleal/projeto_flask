@@ -4,18 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link rel="stylesheet" href="{{url_for('static', filename='style2.css')}}">
     <title>{% block title %} {% endblock %}</title>
+
 </head>
+
 <body>
+
+    <div class="container">
     <nav>
-        <a href="/">Home</a>
-        <a href="/criarcpf"> Criador de CPF</a>
-        <a href="/validarcpf"> Validador de CPF</a>
+        <a href="/criarcpf">Criar CPF</a>
+        <a href="/criarcnpj">Criar CNPJ</a>
+        <a href="/validar-cpf">Validar CPF</a>
+        <a href="/validar-cnpj">Validar CNPJ</a>
     </nav>
-    {% block content %}
-     {% endblock %}
-    
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    </div>
+
 </body>
 </html>
